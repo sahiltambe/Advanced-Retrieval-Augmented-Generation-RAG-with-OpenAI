@@ -75,9 +75,12 @@ AutoRAG (Retrieval-Augmented Generation) Assistant is an advanced AI project des
     
     - Open Your Docker Container and Connect it with a `db_url` variable inside code for connecting to the PostgreSQL database like a did (e.g `"db_url = "postgresql+psycopg://ai:ai@localhost:5532/ai"`)
 
+2. **Enable/Uncomment the few lines of code**:
+    - Add psycopg in requirements.txt.
+    - Uncomment line 17, 24 and 35 in pyhton file `streamlit_app.py`.
+    - add `db_url=db_url` as second parameter in line 32.
 
-
-2. **Run the Streamlit App**:
+3. **Run the Streamlit App**:
     ```bash
     streamlit run streamlit_app.py
     ```
