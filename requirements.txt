@@ -8,4 +8,8 @@ pgvector
 psycopg 
 pypdf 
 ollama
+
 streamlit
+psycopg_c
+libpq
+psycopg_binary
