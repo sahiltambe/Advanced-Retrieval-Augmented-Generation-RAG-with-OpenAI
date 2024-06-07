@@ -6,7 +6,7 @@ AutoRAG (Retrieval-Augmented Generation) Assistant is an advanced AI project des
 
 ## Relevant Links
 
-- [Web Application](https://Advance-Auto-RAG-Assistant.streamlit.app/) -- [Know this before Use](#usage)
+- [Web Application](https://advance-auto-RAG-assistant.streamlit.app/) -- [Know this before Use](#usage)
 - [GitHub](https://github.com/sahiltambe/Advanced-Retrieval-Augmented-Generation-RAG-with-OpenAI/)
 - [LinkedIn](https://www.linkedin.com/in/sahiltambe13//)
 
