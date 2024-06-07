@@ -5,11 +5,9 @@ openai
 duckduckgo-search 
 sqlalchemy 
 pgvector 
-psycopg 
+
 pypdf 
 ollama
 
 streamlit
-psycopg-c
 libpq
-psycopg-binary
