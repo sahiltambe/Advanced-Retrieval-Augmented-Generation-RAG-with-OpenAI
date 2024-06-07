@@ -18,64 +18,64 @@ import psycopg # add psycopg in requirements.txt
 
 # Set up environment variables
 # os.environ['OPENAI_APT_KEY'] = st.secrets["OPENAI_APT_KEY"]
-os.environ['OPENAI_APT_KEY'] = 'OPENAI_APT_KEY'
+# os.environ['OPENAI_APT_KEY'] = 'OPENAI_APT_KEY'
 
-# Database URL for connecting to PostgreSQL
-db_url = "postgresql://ai:ai@localhost:5532/ai"
-logger = logging.getLogger(__name__)
+# # Database URL for connecting to PostgreSQL
+# db_url = "postgresql://ai:ai@localhost:5532/ai"
+# logger = logging.getLogger(__name__)
 
-# Setup Assistant
-def setup_assistant(llm: str) -> Assistant:
-    return Assistant(
-        name="auto_rag_assistant",
-        llm=llm,
-        storage=PgAssistantStorage(table_name="auto_rag_assistant_openai", db_url=db_url), # add db_url=db_url as second parameter
-        knowledge_base=AssistantKnowledge(
-            vector_db=PgVector2(
-                db_url=db_url,
-                collection="auto_rag_documents_openai",
-                embedder=OpenAIEmbedder(model="text-embedding-3-small", api_key='OPENAI_APT_KEY', dimensions=1536),
-            ),
-            num_documents=3,
-        ),
-        description="You are a helpful Assistant called 'AutoRAG' and your goal is to assist the user in the best way possible.",
-        instructions=[
-            "Given a user query, first ALWAYS search your knowledge base using the `search_knowledge_base` tool to see if you have relevant information.",
-            "If you don't find relevant information in your knowledge base, use the `duckduckgo_search` tool to search the internet.",
-            "If you need to reference the chat history, use the `get_chat_history` tool.",
-            "If the user's question is unclear, ask clarifying questions to get more information.",
-            "Carefully read the information you have gathered and provide a clear and concise answer to the user.",
-            "Do not use phrases like 'based on my knowledge' or 'depending on the information'.",
-        ],
-        show_tool_calls=True,
-        search_knowledge=True,
-        read_chat_history=True,
-        tools=[DuckDuckGo()],
-        markdown=True,
-        add_chat_history_to_messages=True,
-        add_datetime_to_instructions=True,
-        debug_mode=True,
-    )
+# # Setup Assistant
+# def setup_assistant(llm: str) -> Assistant:
+#     return Assistant(
+#         name="auto_rag_assistant",
+#         llm=llm,
+#         storage=PgAssistantStorage(table_name="auto_rag_assistant_openai", db_url=db_url), # add db_url=db_url as second parameter
+#         knowledge_base=AssistantKnowledge(
+#             vector_db=PgVector2(
+#                 db_url=db_url,
+#                 collection="auto_rag_documents_openai",
+#                 embedder=OpenAIEmbedder(model="text-embedding-3-small", api_key='OPENAI_APT_KEY', dimensions=1536),
+#             ),
+#             num_documents=3,
+#         ),
+#         description="You are a helpful Assistant called 'AutoRAG' and your goal is to assist the user in the best way possible.",
+#         instructions=[
+#             "Given a user query, first ALWAYS search your knowledge base using the `search_knowledge_base` tool to see if you have relevant information.",
+#             "If you don't find relevant information in your knowledge base, use the `duckduckgo_search` tool to search the internet.",
+#             "If you need to reference the chat history, use the `get_chat_history` tool.",
+#             "If the user's question is unclear, ask clarifying questions to get more information.",
+#             "Carefully read the information you have gathered and provide a clear and concise answer to the user.",
+#             "Do not use phrases like 'based on my knowledge' or 'depending on the information'.",
+#         ],
+#         show_tool_calls=True,
+#         search_knowledge=True,
+#         read_chat_history=True,
+#         tools=[DuckDuckGo()],
+#         markdown=True,
+#         add_chat_history_to_messages=True,
+#         add_datetime_to_instructions=True,
+#         debug_mode=True,
+#     )
 
-# Add Document to Knowledge Base
-def add_document_to_kb(assistant: Assistant, file_path: str, file_type: str = "pdf"):
-    if file_type == "pdf":
-        reader = PDFReader()
-    else:
-        raise ValueError("Unsupported file type")
-    documents: List[Document] = reader.read(file_path)
-    if documents:
-        assistant.knowledge_base.load_documents(documents, upsert=True)
-        logger.info(f"Document '{file_path}' added to the knowledge base.")
-    else:
-        logger.error("Could not read document")
+# # Add Document to Knowledge Base
+# def add_document_to_kb(assistant: Assistant, file_path: str, file_type: str = "pdf"):
+#     if file_type == "pdf":
+#         reader = PDFReader()
+#     else:
+#         raise ValueError("Unsupported file type")
+#     documents: List[Document] = reader.read(file_path)
+#     if documents:
+#         assistant.knowledge_base.load_documents(documents, upsert=True)
+#         logger.info(f"Document '{file_path}' added to the knowledge base.")
+#     else:
+#         logger.error("Could not read document")
 
-# Run Query
-def query_assistant(assistant: Assistant, question: str):
-    response = ""
-    for delta in assistant.run(question):
-        response += delta  # type: ignore
-    return response
+# # Run Query
+# def query_assistant(assistant: Assistant, question: str):
+#     response = ""
+#     for delta in assistant.run(question):
+#         response += delta  # type: ignore
+#     return response
 
 # Streamlit app
 def main():
