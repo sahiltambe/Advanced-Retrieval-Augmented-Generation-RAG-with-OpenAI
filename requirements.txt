@@ -8,5 +8,3 @@ pgvector
 pypdf 
 ollama
 streamlit
-
-psycopg2
