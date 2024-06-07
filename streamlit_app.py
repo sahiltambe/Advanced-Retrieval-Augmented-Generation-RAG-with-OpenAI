@@ -125,6 +125,15 @@ nest_asyncio.apply()
 def main():
     st.title("AutoRAG Assistant")
     
+    # Sidebar for adding documents
+    st.sidebar.title("Add Documents to Knowledge Base")
+    uploaded_file = st.sidebar.file_uploader("Choose a PDF file", type="pdf")
+    if uploaded_file is not None:
+        with open(uploaded_file.name, "wb") as f:
+            f.write(uploaded_file.getbuffer())
+        st.sidebar.success("Document added to the knowledge base")
+    
+    # Main section for asking a question
     st.header("Ask a Question")
     user_query = st.text_input("Enter your question:")
     
