@@ -17,7 +17,8 @@ from phi.storage.assistant.postgres import PgAssistantStorage
 # import psycopg # add psycopg in requirements.txt
 
 # Set up environment variables
-os.environ['OPENAI_APT_KEY'] = st.secrets["OPENAI_APT_KEY"]
+# os.environ['OPENAI_APT_KEY'] = st.secrets["OPENAI_APT_KEY"]
+os.environ['OPENAI_APT_KEY'] = 'OPENAI_APT_KEY'
 
 # Database URL for connecting to PostgreSQL
 # db_url = "postgresql+psycopg://ai:ai@localhost:5532/ai"
