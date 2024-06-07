@@ -14,14 +14,14 @@ from phi.tools.duckduckgo import DuckDuckGo
 from phi.embedder.openai import OpenAIEmbedder
 from phi.vectordb.pgvector import PgVector2
 from phi.storage.assistant.postgres import PgAssistantStorage
-# import psycopg # add psycopg in requirements.txt
+import psycopg # add psycopg in requirements.txt
 
 # Set up environment variables
 # os.environ['OPENAI_APT_KEY'] = st.secrets["OPENAI_APT_KEY"]
 os.environ['OPENAI_APT_KEY'] = 'OPENAI_APT_KEY'
 
 # Database URL for connecting to PostgreSQL
-db_url = "**********://ai:ai@localhost:5532/ai"
+# db_url = "**********://ai:ai@localhost:5532/ai"
 logger = logging.getLogger(__name__)
 
 # Setup Assistant
@@ -29,10 +29,10 @@ def setup_assistant(llm: str) -> Assistant:
     return Assistant(
         name="auto_rag_assistant",
         llm=llm,
-        storage=PgAssistantStorage(table_name="auto_rag_assistant_openai", db_url=db_url),
+        storage=PgAssistantStorage(table_name="auto_rag_assistant_openai"), # add db_url=db_url as second parameter
         knowledge_base=AssistantKnowledge(
             vector_db=PgVector2(
-                db_url=db_url,
+                # db_url=db_url,
                 collection="auto_rag_documents_openai",
                 embedder=OpenAIEmbedder(model="text-embedding-3-small", api_key='OPENAI_APT_KEY', dimensions=1536),
             ),
