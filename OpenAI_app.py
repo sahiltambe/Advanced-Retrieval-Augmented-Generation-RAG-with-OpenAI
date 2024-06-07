@@ -41,7 +41,7 @@ def setup_assistant(llm: str) -> Assistant:
         ),
         description="Your job as a helpful assistant named 'AutoRAG' is to aid the user as much as you can.",
         instructions=[
-            "Always use the `search_knowledge_base} tool to search your knowledge base for relevant information when responding to a user query.",
+            "Always use the `search_knowledge_base` tool to search your knowledge base for relevant information when responding to a user query.",
 
             "Use the `duckduckgo_search` tool to search the internet if you are unable to find relevant material in your knowledge base.""Use the `get_chat_history} tool if you need to refer to the chat history."
 
