@@ -5,7 +5,6 @@ openai
 duckduckgo-search 
 sqlalchemy 
 pgvector
-psycopg
 
 pypdf 
 ollama
