@@ -10,3 +10,4 @@ ollama
 streamlit
 
 psycopg
+psycopg2-binary
