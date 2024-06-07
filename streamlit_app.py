@@ -78,34 +78,64 @@ from phi.storage.assistant.postgres import PgAssistantStorage
 #     return response
 
 # Streamlit app
+# def main():
+#     st.title("Your Advance Auto RAG Assistant")
+    
+#     # Initialize Assistant
+#     nest_asyncio.apply()
+#     llm_model = os.getenv("OPENAI_MODEL_NAME", "gpt-4")
+#     llm = OpenAIChat(model=llm_model, api_key='OPENAI_APT_KEY')
+#     assistant = setup_assistant(llm)
+    
+#     # Sidebar for adding documents
+#     st.sidebar.title("Add Documents to Knowledge Base")
+#     uploaded_file = st.sidebar.file_uploader("Choose a PDF file", type="pdf")
+#     if uploaded_file is not None:
+#         with open(uploaded_file.name, "wb") as f:
+#             f.write(uploaded_file.getbuffer())
+#         add_document_to_kb(assistant, uploaded_file.name, file_type="pdf")
+#         st.sidebar.success("Document added to the knowledge base")
+    
+#     # Query section
+#     st.header("Ask a Question")
+#     user_query = st.text_input("Enter your question:")
+#     if st.button("Submit"):
+#         if user_query:
+#             response = query_assistant(assistant, user_query)
+#             st.write("**Response:**")
+#             st.write(response)
+#         else:
+#             st.write("Please enter a question.")
+
+# if __name__ == "__main__":
+#     main()
+
+import streamlit as st
+import nest_asyncio
+import logging
+import os
+
+# Set up environment variables
+os.environ['OPENAI_APT_KEY'] = 'your_openai_api_key'
+
+# Initialize Streamlit
+nest_asyncio.apply()
+
+# UI Layout
 def main():
-    st.title("Your Advance Auto RAG Assistant")
+    st.title("AutoRAG Assistant")
     
-    # Initialize Assistant
-    nest_asyncio.apply()
-    llm_model = os.getenv("OPENAI_MODEL_NAME", "gpt-4")
-    llm = OpenAIChat(model=llm_model, api_key='OPENAI_APT_KEY')
-    assistant = setup_assistant(llm)
-    
-    # Sidebar for adding documents
-    st.sidebar.title("Add Documents to Knowledge Base")
-    uploaded_file = st.sidebar.file_uploader("Choose a PDF file", type="pdf")
-    if uploaded_file is not None:
-        with open(uploaded_file.name, "wb") as f:
-            f.write(uploaded_file.getbuffer())
-        add_document_to_kb(assistant, uploaded_file.name, file_type="pdf")
-        st.sidebar.success("Document added to the knowledge base")
-    
-    # Query section
     st.header("Ask a Question")
     user_query = st.text_input("Enter your question:")
+    
     if st.button("Submit"):
         if user_query:
-            response = query_assistant(assistant, user_query)
+            st.info("Processing your query...")
+            response = "This is a sample response. Your query will be processed in a real deployment."
             st.write("**Response:**")
             st.write(response)
         else:
-            st.write("Please enter a question.")
+            st.warning("Please enter a question.")
 
 if __name__ == "__main__":
     main()
