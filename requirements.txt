@@ -10,6 +10,6 @@ pypdf
 ollama
 
 streamlit
-psycopg_c
+psycopg-c
 libpq
-psycopg_binary
+psycopg-binary
