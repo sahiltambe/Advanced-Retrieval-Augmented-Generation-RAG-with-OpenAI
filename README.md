@@ -80,7 +80,7 @@ AutoRAG (Retrieval-Augmented Generation) Assistant is an advanced AI project des
 2. **Run the Streamlit App**:
     ```bash
     streamlit run streamlit_app.py
-    
+    ```
     - Add Documents to Knowledge Base.
     - Choose a PDF file.
     - And ask a Question.
