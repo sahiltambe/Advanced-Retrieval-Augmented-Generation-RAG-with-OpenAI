@@ -4,7 +4,8 @@ beautifulsoup4
 openai 
 duckduckgo-search 
 sqlalchemy 
-pgvector 
+pgvector
+psycopg
 
 pypdf 
 ollama

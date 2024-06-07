@@ -14,7 +14,7 @@ from phi.tools.duckduckgo import DuckDuckGo
 from phi.embedder.openai import OpenAIEmbedder
 from phi.vectordb.pgvector import PgVector2
 from phi.storage.assistant.postgres import PgAssistantStorage
-# import psycopg # add psycopg in requirements.txt
+import psycopg # add psycopg in requirements.txt
 
 # Set up environment variables
 # os.environ['OPENAI_APT_KEY'] = st.secrets["OPENAI_APT_KEY"]
