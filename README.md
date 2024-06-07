@@ -6,7 +6,7 @@ AutoRAG (Retrieval-Augmented Generation) Assistant is an advanced AI project des
 
 ## Relevant Links
 
-- [Web Application](https://advance-auto-RAG-assistant.streamlit.app/) -- [Know this before Use](#usage)
+- [Web Application](https://advance-auto-RAG-assistant.streamlit.app/) -- [Do this before Use](#instructions)
 - [GitHub](https://github.com/sahiltambe/Advanced-Retrieval-Augmented-Generation-RAG-with-OpenAI/)
 - [LinkedIn](https://www.linkedin.com/in/sahiltambe13//)
 
@@ -35,7 +35,7 @@ AutoRAG (Retrieval-Augmented Generation) Assistant is an advanced AI project des
 - `phi` (Custom AI framework)
 - `psycopg` (PostgreSQL adapter for Python if any)
 
-## Setup Instructions
+## Instructions
 
 1. **Clone the Repository**:
     ```bash
@@ -54,39 +54,26 @@ AutoRAG (Retrieval-Augmented Generation) Assistant is an advanced AI project des
       OPENAI_MODEL_NAME = "OPENAI_MODEL_NAME"
       OPENAI_API_KEY = "YOUR_OPENAI_API_KEY"
       ```
+
+4. **Setup your Docker**:   
+    
+    - Open Your Docker Container and Connect it with a `db_url` variable inside code `main.py` for connecting to the PostgreSQL database like a did (e.g `"db_url = "postgresql+psycopg://ai:ai@localhost:5532/ai"`)
+    
     OR
 
-    - Obtain your Google API key from [Google](https://makersuite.google.com/).
-    - Create a `.env` file in the root directory and add your API key:
-      ```env
-      GOOGLE_API_KEY= "YOUR_GOOGLE_API_KEY"
+    - Create and connect it with your database
 
-4. **Interact with the Assistant**:
-    - Add documents to the knowledge base and query the assistant using the provided functions.
-
-
-## Usage
-
-1. **Before running the Streamlit App**:   
-    - Obtain your OpenAI API key from [OpenAI](https://www.openai.com).
-    - Create a `.env` file in the root directory and add your API key:
-      ```env
-      OPENAI_API_KEY= "YOUR_OPENAI_API_KEY"
-    
-    - Open Your Docker Container and Connect it with a `db_url` variable inside code for connecting to the PostgreSQL database like a did (e.g `"db_url = "postgresql+psycopg://ai:ai@localhost:5532/ai"`)
-
-2. **Enable/Uncomment the few lines of code**:
-    - Add psycopg in requirements.txt.
-    - Uncomment line 17, 24 and 35 in pyhton file `streamlit_app.py`.
-    - add `db_url=db_url` as second parameter in line 32.
-
-3. **Run the Streamlit App**:
+5. **Run the Streamlit App**:
     ```bash
-    streamlit run streamlit_app.py
+    streamlit run main.py
     ```
-    - Add Documents to Knowledge Base.
+
+6. **Interact with the Assistant**:
+
+    - Add documents to the knowledge base.
     - Choose a PDF file.
-    - And ask a Question.
+    - Query the assistant.
+
 
 ## Contributing
 If you would like to contribute to this project, please fork the repository and submit a pull request. Ensure that your code adheres to the project's coding standards and includes appropriate tests.
