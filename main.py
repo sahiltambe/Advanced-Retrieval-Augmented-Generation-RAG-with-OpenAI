@@ -29,7 +29,7 @@ def setup_assistant(llm: str) -> Assistant:
     return Assistant(
         name="auto_rag_assistant",
         llm=llm,
-        storage=PgAssistantStorage(table_name="auto_rag_assistant_openai", db_url=db_url), # add db_url=db_url as second parameter
+        storage=PgAssistantStorage(table_name="auto_rag_assistant_openai", db_url=db_url),
         knowledge_base=AssistantKnowledge(
             vector_db=PgVector2(
                 db_url=db_url,

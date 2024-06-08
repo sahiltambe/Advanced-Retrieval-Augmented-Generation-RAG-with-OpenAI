@@ -9,5 +9,25 @@ pypdf
 ollama
 streamlit
 
+langchain
+python-dotenv
+langchain
+google-generativeai
+langchain-community
+huggingface-hub
+streamlit
+ipykernel
+
+langchain==0.0.284
+pypdf
+
+tiktoken==0.4.0
+faiss-cpu==1.7.4
+
+InstructorEmbedding
+torch
+sentence-transformers==2.2.2
+
+
 psycopg
 psycopg2-binary
