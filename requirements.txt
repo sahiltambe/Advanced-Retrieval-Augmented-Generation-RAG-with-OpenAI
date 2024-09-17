@@ -18,7 +18,7 @@ huggingface-hub
 streamlit
 ipykernel
 
-langchain==0.2.3
+langchain==0.2.10
 pypdf
 
 tiktoken==0.4.0
