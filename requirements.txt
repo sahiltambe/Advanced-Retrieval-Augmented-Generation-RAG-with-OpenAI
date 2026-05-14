@@ -9,16 +9,16 @@ pypdf
 ollama
 streamlit
 
-langchain
+langchain==0.3.30
 python-dotenv
-langchain
+langchain==0.3.30
 google-generativeai
 langchain-community
 huggingface-hub
 streamlit
 ipykernel
 
-langchain==0.3.7
+langchain==0.3.30==0.3.7
 pypdf
 
 tiktoken==0.4.0
